@@ -5,11 +5,11 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #e0f7fa;
+    background-color: #aaeff8;
 }
 
 .quiz-container {
-    background-color: #ffffff;
+    background-color: #d1fffb;
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -21,6 +21,8 @@ body {
 h1 {
     color: #00796b;
     margin-bottom: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight:bold;
 }
 
 #question {
