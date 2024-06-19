@@ -11,6 +11,16 @@ const questions = [
     { text: "The 'main store' of CPU is called Temporary Memory", answer: false }
 ];
 
+const correctMessages = [
+    "WOW! SUCH A SMARTIE!",
+    "Your brain must be massive!"
+];
+
+const incorrectMessages = [
+    "HAHAHAH YOU'RE WRONG!",
+    "I'm disappointed..."
+];
+
 let currentQuestionIndex = 0;
 let score = 0;
 
@@ -23,12 +33,13 @@ function loadQuestion() {
 
 function checkAnswer(answer) {
     const resultElement = document.getElementById("result");
-    if (answer === questions[currentQuestionIndex].answer) {
-        resultElement.innerText = "Wow, such a smartie!";
-        score++;
-    } else {
-        resultElement.innerText = "HAHAH YOU'RE WRONG!!";
-    }
+    const isCorrect = answer === questions[currentQuestionIndex].answer;
+    const messageArray = isCorrect ? correctMessages : incorrectMessages;
+    const randomMessage = messageArray[Math.floor(Math.random() * messageArray.length)];
+
+    resultElement.innerText = randomMessage;
+    if (isCorrect) score++;
+
     document.getElementById("question-container").style.display = 'none';
     document.getElementById("result-container").style.display = 'block';
 }
