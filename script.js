@@ -31,11 +31,15 @@ function loadQuestion() {
     document.getElementById("result-container").style.display = 'none';
 }
 
+function getRandomMessage(messages) {
+    return messages[Math.floor(Math.random() * messages.length)];
+}
+
 function checkAnswer(answer) {
     const resultElement = document.getElementById("result");
     const isCorrect = answer === questions[currentQuestionIndex].answer;
     const messageArray = isCorrect ? correctMessages : incorrectMessages;
-    const randomMessage = messageArray[Math.floor(Math.random() * messageArray.length)];
+    const randomMessage = getRandomMessage(messageArray);
 
     resultElement.innerText = randomMessage;
     if (isCorrect) score++;
@@ -52,8 +56,17 @@ function nextQuestion() {
         document.getElementById("question-container").style.display = 'none';
         document.getElementById("result-container").style.display = 'block';
         document.getElementById("result").innerText = `Quiz Finished! Your score is ${score} out of ${questions.length}`;
-        document.querySelector("#result-container button").style.display = 'none';
+        document.getElementById("next-question-button").style.display = 'none';
+        document.getElementById("restart-button").style.display = 'block';
     }
+}
+
+function restartQuiz() {
+    currentQuestionIndex = 0;
+    score = 0;
+    document.getElementById("next-question-button").style.display = 'block';
+    document.getElementById("restart-button").style.display = 'none';
+    loadQuestion();
 }
 
 window.onload = loadQuestion;
